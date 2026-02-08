@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estudio Lopez Moccia y Asociados</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    /* --- GENERAL --- */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #fff;
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      background-color: #000;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      z-index: 999;
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .navbar-nav .nav-link {
+      color: #f1f1f1 !important;
+      font-weight: 500;
+      text-transform: uppercase;
+      position: relative;
+      margin-left: 25px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -5px;
+      background-color: #e0a800;
+      transition: width 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #e0a800 !important;
+    }
+
+    .logo {
+      height: 70px;
+      width: auto;
+      margin-right: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* --- HEADER / HERO --- */
+    header {
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20250324/pngtree-a-gold-balance-scale-symbolizes-justice-placed-on-dark-wooden-desk-image_17138389.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    header h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 3.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+      animation: slideInDown 1.5s ease forwards;
+    }
+
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- SECCIONES --- */
+    section {
+      padding: 90px 0;
+    }
+
+    section h2 {
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #000;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* --- SERVICIOS --- */
+    .card {
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: none;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card i, .card img {
+      color: #e0a800;
+      font-size: 2.8rem;
+    }
+
+    /* --- CONTACTO --- */
+    .btn-whatsapp {
+      background-color: #25d366;
+      border: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+
+    /* --- BOTÓN FLOTANTE --- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #fff;
+      font-size: 1.8rem;
+      padding: 15px 18px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #1ebe5d;
+      transform: scale(1.1);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      font-size: 0.9rem;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.3rem;
+        padding: 0 20px;
+      }
+
+      .navbar-nav .nav-link {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.png" alt="Logo" class="logo">
+        Dra. Vanesa Lopez Moccia
+      </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Estudio Lopez Moccia y Asociados</h1>
+  </header>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre-nosotros">
+    <div class="container text-center">
+      <h2>Sobre Nosotros</h2>
+      <p>Somos un equipo de profesionales especializados en el ámbito legal, médico, automotriz, de seguros, en accidentes de tránsito y mediaciones / acuerdos extrajudiciales.  
+      Trabajamos de manera interdisciplinaria para ofrecer un servicio integral, garantizando atención personalizada, asesoramiento eficaz y soluciones rápidas adaptadas a cada caso particular.  
+      Con más de 25 años de experiencia en el rubro, nuestro compromiso es brindar excelencia, confianza y resultados.  
+      Estamos para asesorarte. No dudes en consultarnos.</p>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="bg-light">
+    <div class="container">
+      <h2 class="text-center">Servicios</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="card shadow p-4 text-center">
+            <i class="bi bi-file-earmark-text"></i>
+            <h5 class="card-title mt-3">A.R.T</h5>
+            <p class="card-text">Reclamos ante aseguradoras por accidentes laborales y cobertura médica.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card shadow p-4 text-center">
+            <i class="bi bi-car-front"></i>
+            <h5 class="card-title mt-3">Siniestros</h5>
+            <p class="card-text">Reclamos judiciales ante compañías de seguros y juicios por daños.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card shadow p-4 text-center">
+            <i class="bi bi-people"></i>
+            <h5 class="card-title mt-3">Derecho Laboral</h5>
+            <p class="card-text">Asesoría y representación en conflictos laborales.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card shadow p-4 text-center">
+            <i class="bi bi-house-door"></i>
+            <h5 class="card-title mt-3">Civil y Familia</h5>
+            <p class="card-text">Usucapión, sucesiones, divorcios y alimentos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <h2 class="text-center mb-4">Contacto</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <form id="contactForm" class="shadow p-4 rounded bg-white">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre y Apellido</label>
+              <input type="text" id="nombre" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea id="mensaje" rows="4" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-whatsapp w-100 text-white">
+              <i class="bi bi-whatsapp"></i> Enviar por WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Estudio Lopez Moccia y Asociados - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE -->
+  <a href="https://wa.me/5491134882103" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Envío directo a WhatsApp
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim();
+      const mensaje = document.getElementById("mensaje").value.trim();
+
+      if (!nombre || !mensaje) {
+        alert("Por favor, complete todos los campos.");
+        return;
+      }
+
+      const telefono = "5491134327675"; // número de WhatsApp
+      const texto = `Hola, soy ${nombre}. ${mensaje}`;
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+      window.open(url, "_blank");
+    });
+
+    // Animación de entrada al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    });
+
+    document.querySelectorAll(".card").forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
